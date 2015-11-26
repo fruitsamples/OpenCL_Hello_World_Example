@@ -71,7 +71,7 @@
 // Simple compute kernel which computes the square of an input array 
 //
 const char *KernelSource = "\n" \
-"__kernel square(                                                       \n" \
+"__kernel void square(                                                       \n" \
 "   __global float* input,                                              \n" \
 "   __global float* output,                                             \n" \
 "   const unsigned int count)                                           \n" \
@@ -204,7 +204,7 @@ int main(int argc, char** argv)
 
     // Get the maximum work group size for executing the kernel on the device
     //
-    err = clGetKernelWorkGroupInfo(kernel, device_id, CL_KERNEL_WORK_GROUP_SIZE, sizeof(int), &local, NULL);
+    err = clGetKernelWorkGroupInfo(kernel, device_id, CL_KERNEL_WORK_GROUP_SIZE, sizeof(local), &local, NULL);
     if (err != CL_SUCCESS)
     {
         printf("Error: Failed to retrieve kernel work group info! %d\n", err);
